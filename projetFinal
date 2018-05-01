@@ -5,6 +5,118 @@ import pygame
 import random   # permet d'utiliser la fonction hasard
 from tkinter import *
 
+
+
+
+def color(fenetre, ligne, maListe, codeSecret, nombreEssais, color, red, orange, yellow, green, blue, purple, pink, white, text, text6):
+    pygame.draw.circle(fenetre, color, (636,ligne), 20, 0)
+    maListe.append(8)
+    bonneposition, bonnecouleur = sequence(maListe, codeSecret)
+    if bonneposition==0 and bonnecouleur==1:
+        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
+    elif bonneposition==0 and bonnecouleur==2:
+        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
+    elif bonneposition==0 and bonnecouleur==3:
+        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
+    elif bonneposition==0 and bonnecouleur==4:
+        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
+    elif bonneposition==1 and bonnecouleur==0:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+    elif bonneposition==1 and bonnecouleur==1:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
+    elif bonneposition==1 and bonnecouleur==2:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
+    elif bonneposition==1 and bonnecouleur==3:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
+    elif bonneposition==2 and bonnecouleur==0:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
+    elif bonneposition==2 and bonnecouleur==1:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
+    elif bonneposition==2 and bonnecouleur==2:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
+    elif bonneposition==3 and bonnecouleur==0:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
+    elif bonneposition==3 and bonnecouleur==1:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
+    elif bonneposition==4 and bonnecouleur==0:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
+        pygame.draw.circle(fenetre, red, (716, ligne+10), 5, 0)
+
+    if maListe == codeSecret:
+        fenetre.blit(text, (421, 8))
+        for loop in range (4):
+            if maListe[loop]==1:
+                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
+            elif maListe[loop]==2:
+                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
+            elif maListe[loop]==3:
+                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
+            elif maListe[loop]==4:
+                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
+            elif maListe[loop]==5:
+                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
+            elif maListe[loop]==6:
+                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
+            elif maListe[loop]==7:
+                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
+            elif maListe[loop]==8:
+                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
+        return False
+
+    elif nombreEssais==9:
+        fenetre.blit(text6, (421,8))
+        for loop in range (4):
+            if codeSecret[loop]==1:
+                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
+            elif codeSecret[loop]==2:
+                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
+            elif codeSecret[loop]==3:
+                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
+            elif codeSecret[loop]==4:
+                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
+            elif codeSecret[loop]==5:
+                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
+            elif codeSecret[loop]==6:
+                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
+            elif codeSecret[loop]==7:
+                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
+            elif codeSecret[loop]==8:
+                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
+
+        return False
+    else:
+        return True
+
+
+
+
+
+
 def sequence(maListe, codeSecret):
 
     A= codeSecret[0]
@@ -71,6 +183,11 @@ def sequence(maListe, codeSecret):
 
     return bonneposition, bonnecouleur
 
+
+
+
+
+
 def main():
 
     # ----Combinaison----
@@ -98,10 +215,11 @@ def main():
     orange = (230,126,34)
     black = (0,0,0)
     grey = (128,128,128)
-    ligne = 682
+    ligne=682
     font = pygame.font.SysFont ("impact", 36)
     text = font.render("C'est gagné!", True, yellow)
-    nbessaies=0
+    text6 = font.render("C'est perdu!", True, yellow)
+    nombreEssais=0
 
 
 
@@ -163,8 +281,6 @@ def main():
 
 
     pygame.display.flip()
-
-
 
     while running:
 
@@ -328,857 +444,133 @@ def main():
 
             elif pos4:
                 if redCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, red, (636,ligne), 20, 0)
+                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, red, red, orange, yellow, green, blue, purple, pink, white, text, text6)
 
+
+                    pygame.display.flip()
                     pos4 = False
                     pos1 = True
-                    maListe.append(1)
-                    bonneposition, bonnecouleur = sequence(maListe, codeSecret)
-                    if bonneposition==0 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==3:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==4:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==3:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==3 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                    elif bonneposition==3 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==4 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne+10), 5, 0)
-                    if maListe == codeSecret:
-                        fenetre.blit(text, (421, 8))
-                        for loop in range (4):
-                            if maListe[loop]==1:
-                                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==2:
-                                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==3:
-                                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==4:
-                                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==5:
-                                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==6:
-                                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==7:
-                                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==8:
-                                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-                        running = False
-                    elif nbessaies==9:
-                        for loop in range (4):
-                            if codeSecret[loop]==1:
-                                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==2:
-                                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==3:
-                                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==4:
-                                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==5:
-                                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==6:
-                                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==7:
-                                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==8:
-                                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-
-                    nbessaies=nbessaies+1
-
+                    nombreEssais=nombreEssais+1
                     ligne = ligne-60
                     maListe = []
-                    pygame.display.flip()
 
                 elif orangeCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, orange, (636,ligne), 20, 0)
+                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, orange, red, orange, yellow, green, blue, purple, pink, white, text, text6)
 
+
+                    pygame.display.flip()
                     pos4 = False
                     pos1 = True
-                    maListe.append(2)
-                    bonneposition, bonnecouleur = sequence(maListe, codeSecret)
-                    if bonneposition==0 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==3:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==4:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==3:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==3 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                    elif bonneposition==3 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==4 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne+10), 5, 0)
-
-
-
-
-
-                    if maListe == codeSecret:
-                        fenetre.blit(text, (421, 8))
-                        for loop in range (4):
-                            if maListe[loop]==1:
-                                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==2:
-                                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==3:
-                                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==4:
-                                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==5:
-                                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==6:
-                                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==7:
-                                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==8:
-                                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-                        running = False
-                    elif nbessaies==9:
-                        for loop in range (4):
-                            if codeSecret[loop]==1:
-                                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==2:
-                                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==3:
-                                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==4:
-                                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==5:
-                                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==6:
-                                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==7:
-                                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==8:
-                                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-
-                    nbessaies=nbessaies+1
-
+                    nombreEssais=nombreEssais+1
                     ligne = ligne-60
                     maListe = []
-                    pygame.display.flip()
 
                 elif yellowCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, yellow, (636,ligne), 20, 0)
+                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, yellow, red, orange, yellow, green, blue, purple, pink, white, text, text6)
 
+
+                    pygame.display.flip()
                     pos4 = False
                     pos1 = True
-                    maListe.append(3)
-                    bonneposition, bonnecouleur = sequence(maListe, codeSecret)
-                    if bonneposition==0 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==3:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==4:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==3:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==3 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                    elif bonneposition==3 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==4 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne+10), 5, 0)
-                    if maListe == codeSecret:
-                        fenetre.blit(text, (421, 8))
-                        for loop in range (4):
-                            if maListe[loop]==1:
-                                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==2:
-                                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==3:
-                                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==4:
-                                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==5:
-                                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==6:
-                                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==7:
-                                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==8:
-                                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-                        running = False
-                    elif nbessaies==9:
-                        for loop in range (4):
-                            if codeSecret[loop]==1:
-                                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==2:
-                                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==3:
-                                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==4:
-                                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==5:
-                                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==6:
-                                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==7:
-                                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==8:
-                                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-
-                    nbessaies=nbessaies+1
-
+                    nombreEssais=nombreEssais+1
                     ligne = ligne-60
                     maListe = []
-                    pygame.display.flip()
 
                 elif greenCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, green, (636,ligne), 20, 0)
+                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, green, red, orange, yellow, green, blue, purple, pink, white, text, text6)
 
+
+                    pygame.display.flip()
                     pos4 = False
                     pos1 = True
-                    maListe.append(4)
-                    bonneposition, bonnecouleur = sequence(maListe, codeSecret)
-                    if bonneposition==0 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==3:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==4:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==3:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==3 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                    elif bonneposition==3 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==4 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne+10), 5, 0)
-                    if maListe == codeSecret:
-                        fenetre.blit(text, (421, 8))
-                        for loop in range (4):
-                            if maListe[loop]==1:
-                                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==2:
-                                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==3:
-                                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==4:
-                                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==5:
-                                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==6:
-                                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==7:
-                                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==8:
-                                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-                        running = False
-                    elif nbessaies==9:
-                        for loop in range (4):
-                            if codeSecret[loop]==1:
-                                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==2:
-                                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==3:
-                                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==4:
-                                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==5:
-                                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==6:
-                                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==7:
-                                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==8:
-                                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-
-                    nbessaies=nbessaies+1
-
+                    nombreEssais=nombreEssais+1
                     ligne = ligne-60
                     maListe = []
-                    pygame.display.flip()
 
                 elif blueCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, blue, (636,ligne), 20, 0)
+                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, blue, red, orange, yellow, green, blue, purple, pink, white, text, text6)
 
+
+                    pygame.display.flip()
                     pos4 = False
                     pos1 = True
-                    maListe.append(5)
-                    bonneposition, bonnecouleur = sequence(maListe, codeSecret)
-                    if bonneposition==0 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==3:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==4:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==3:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==3 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                    elif bonneposition==3 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==4 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne+10), 5, 0)
-                    if maListe == codeSecret:
-                        fenetre.blit(text, (421, 8))
-                        for loop in range (4):
-                            if maListe[loop]==1:
-                                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==2:
-                                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==3:
-                                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==4:
-                                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==5:
-                                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==6:
-                                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==7:
-                                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==8:
-                                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-                        running = False
-                    elif nbessaies==9:
-                        for loop in range (4):
-                            if codeSecret[loop]==1:
-                                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==2:
-                                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==3:
-                                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==4:
-                                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==5:
-                                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==6:
-                                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==7:
-                                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==8:
-                                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-
-                    nbessaies=nbessaies+1
-
+                    nombreEssais=nombreEssais+1
                     ligne = ligne-60
                     maListe = []
-                    pygame.display.flip()
 
                 elif purpleCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, purple, (636,ligne), 20, 0)
+                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, purple, red, orange, yellow, green, blue, purple, pink, white, text, text6)
 
+
+                    pygame.display.flip()
                     pos4 = False
                     pos1 = True
-                    maListe.append(6)
-                    bonneposition, bonnecouleur = sequence(maListe, codeSecret)
-                    if bonneposition==0 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==3:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==4:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==3:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==3 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                    elif bonneposition==3 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==4 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne+10), 5, 0)
-                    if maListe == codeSecret:
-                        fenetre.blit(text, (421, 8))
-                        for loop in range (4):
-                            if maListe[loop]==1:
-                                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==2:
-                                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==3:
-                                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==4:
-                                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==5:
-                                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==6:
-                                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==7:
-                                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==8:
-                                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-                        running = False
-                    elif nbessaies==9:
-                        for loop in range (4):
-                            if codeSecret[loop]==1:
-                                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==2:
-                                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==3:
-                                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==4:
-                                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==5:
-                                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==6:
-                                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==7:
-                                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==8:
-                                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-
-                    nbessaies=nbessaies+1
-
+                    nombreEssais=nombreEssais+1
                     ligne = ligne-60
                     maListe = []
-                    pygame.display.flip()
-
                 elif pinkCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, pink, (636,ligne), 20, 0)
+                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, pink, red, orange, yellow, green, blue, purple, pink, white, text, text6)
 
+
+                    pygame.display.flip()
                     pos4 = False
                     pos1 = True
-                    maListe.append(7)
-                    bonneposition, bonnecouleur = sequence(maListe, codeSecret)
-                    if bonneposition==0 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==3:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==4:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==3:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==3 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                    elif bonneposition==3 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==4 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne+10), 5, 0)
-                    if maListe == codeSecret:
-                        fenetre.blit(text, (421, 8))
-                        for loop in range (4):
-                            if maListe[loop]==1:
-                                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==2:
-                                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==3:
-                                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==4:
-                                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==5:
-                                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==6:
-                                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==7:
-                                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==8:
-                                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-                        running = False
-                    elif nbessaies==9:
-                        for loop in range (4):
-                            if codeSecret[loop]==1:
-                                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==2:
-                                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==3:
-                                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==4:
-                                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==5:
-                                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==6:
-                                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==7:
-                                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==8:
-                                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-
-                    nbessaies=nbessaies+1
-
+                    nombreEssais=nombreEssais+1
                     ligne = ligne-60
                     maListe = []
-                    pygame.display.flip()
+
 
                 elif whiteCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, white, (636,ligne), 20, 0)
+                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, white, red, orange, yellow, green, blue, purple, pink, white, text, text6)
 
+
+                    pygame.display.flip()
                     pos4 = False
                     pos1 = True
-                    maListe.append(8)
-                    bonneposition, bonnecouleur = sequence(maListe, codeSecret)
-                    if bonneposition==0 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==3:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==0 and bonnecouleur==4:
-                        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==1 and bonnecouleur==3:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                    elif bonneposition==2 and bonnecouleur==2:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==3 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                    elif bonneposition==3 and bonnecouleur==1:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-                    elif bonneposition==4 and bonnecouleur==0:
-                        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-                        pygame.draw.circle(fenetre, red, (716, ligne+10), 5, 0)
-                    if maListe == codeSecret:
-                        fenetre.blit(text, (421, 8))
-                        for loop in range (4):
-                            if maListe[loop]==1:
-                                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==2:
-                                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==3:
-                                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==4:
-                                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==5:
-                                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==6:
-                                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==7:
-                                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-                            elif maListe[loop]==8:
-                                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-                        running = False
-
-                    elif nbessaies==9:
-                        for loop in range (4):
-                            if codeSecret[loop]==1:
-                                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==2:
-                                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==3:
-                                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==4:
-                                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==5:
-                                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==6:
-                                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==7:
-                                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-                            elif codeSecret[loop]==8:
-                                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-
-                    nbessaies=nbessaies+1
+                    nombreEssais=nombreEssais+1
                     ligne = ligne-60
                     maListe = []
-                    pygame.display.flip()
+
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                pygame.quit()
+                return
+    while True:
+        for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                    pygame.quit()
+                    return
+
+
+
+
+def main2():
+    running=True
+    pygame.init()
+    black=(0,0,0)
+    white = (255,255,255)
+    fenetre = pygame.display.set_mode((1024, 768))
+    fond = pygame.image.load("Mastermind2.png").convert()
+    fenetre.blit(fond, (0,0))
+
+    while running:
+
+
+        playButton = pygame.draw.rect(fenetre, black, (341,288,342,128))
+        font = pygame.font.SysFont ("impact", 48)
+        textPlay = font.render("Play Game", True, white)
+        fenetre.blit(textPlay, (410,320))
+
+        pygame.display.flip()
+        pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
+        pos = pygame.mouse.get_pos()
+        if pressed1:
+            if playButton.collidepoint(pos):
+                main()
+                return
 
 
 
@@ -1188,10 +580,4 @@ def main():
                 pygame.quit()
                 return
 
-
-
-
-
-
-
-main()
+main2()
