@@ -1,15 +1,17 @@
-# ISN-mikaEtChristian
+#ISN-mikaEtChristian
 #Projet final d'ISN
 
-import pygame
-import random   # permet d'utiliser la fonction hasard
+import pygame   #Permet d'utiliser pygame
+import random   #Permet d'utiliser la fonction hasard
 
 
 
 
+#Fonction couleur qui est executée dans la fonction
+def couleur(fenetre, ligne, maListe, codeSecret, nombreEssais, color, red, orange, yellow, green, blue, purple, pink, white, text, text6):    #On fait une liste d'arguments qui vont être utilisés dans d'autres fonctions plus tard
+    pygame.draw.circle(fenetre, color, (636,ligne), 20, 0)  #Dessine un pion à l'emplacement 4 de la ligne ligne+x de la couleure mise en argument
 
-def color(fenetre, ligne, maListe, codeSecret, nombreEssais, color, red, orange, yellow, green, blue, purple, pink, white, text, text6):
-    pygame.draw.circle(fenetre, color, (636,ligne), 20, 0)
+#Met un chiffre en dèrnière position de la liste maListe qui correspond à la couleure du pion placé en dèrnière position
     if color == red:
         maListe.append(1)
     if color == orange:
@@ -27,6 +29,8 @@ def color(fenetre, ligne, maListe, codeSecret, nombreEssais, color, red, orange,
     if color == white:
         maListe.append(8)
     bonneposition, bonnecouleur = sequence(maListe, codeSecret)
+
+#Permet de placer les pions blancs et rouges pour vérifier si les pions placés sont bons ou pas
     if bonneposition==0 and bonnecouleur==1:
         pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
     elif bonneposition==0 and bonnecouleur==2:
@@ -82,8 +86,10 @@ def color(fenetre, ligne, maListe, codeSecret, nombreEssais, color, red, orange,
         pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
         pygame.draw.circle(fenetre, red, (716, ligne+10), 5, 0)
 
+#Si le bon code est entré alors ce programme est executé
     if maListe == codeSecret:
-        fenetre.blit(text, (421, 8))
+        fenetre.blit(text, (421, 8))    #.blit permet de placer le texte, l'image, etc à partir de la position (x, y) indiquée
+#Permet de dessiner le bon code à l'emplacement des points d'interogation une fois que le bon code est trouvé
         for loop in range (4):
             if maListe[loop]==1:
                 pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
@@ -103,6 +109,7 @@ def color(fenetre, ligne, maListe, codeSecret, nombreEssais, color, red, orange,
                 pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
         return False
 
+#Si le bon code n'est pas trouvé au bout de 10 essais alors ce programme est executé
     elif nombreEssais==9:
         fenetre.blit(text6, (421,8))
         for loop in range (4):
@@ -203,10 +210,9 @@ def sequence(maListe, codeSecret):
 
 
 
-def mode1():
+def mode(couleurs):
 
     # ----Combinaison----
-    couleurs = [1,2,3,4,5,6,7,8]
     codeSecret = random.sample(couleurs, 4)  # prendre les 4 premiers
 
     pygame.init()
@@ -459,7 +465,7 @@ def mode1():
 
             elif pos4:
                 if redCircle.collidepoint(pos):
-                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, red, red, orange, yellow, green, blue, purple, pink, white, text, text6)
+                    running = couleur(fenetre, ligne, maListe, codeSecret, nombreEssais, red, red, orange, yellow, green, blue, purple, pink, white, text, text6)
 
 
                     pygame.display.flip()
@@ -470,7 +476,7 @@ def mode1():
                     maListe = []
 
                 elif orangeCircle.collidepoint(pos):
-                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, orange, red, orange, yellow, green, blue, purple, pink, white, text, text6)
+                    running = couleur(fenetre, ligne, maListe, codeSecret, nombreEssais, orange, red, orange, yellow, green, blue, purple, pink, white, text, text6)
 
 
                     pygame.display.flip()
@@ -481,7 +487,7 @@ def mode1():
                     maListe = []
 
                 elif yellowCircle.collidepoint(pos):
-                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, yellow, red, orange, yellow, green, blue, purple, pink, white, text, text6)
+                    running = couleur(fenetre, ligne, maListe, codeSecret, nombreEssais, yellow, red, orange, yellow, green, blue, purple, pink, white, text, text6)
 
 
                     pygame.display.flip()
@@ -492,7 +498,7 @@ def mode1():
                     maListe = []
 
                 elif greenCircle.collidepoint(pos):
-                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, green, red, orange, yellow, green, blue, purple, pink, white, text, text6)
+                    running = couleur(fenetre, ligne, maListe, codeSecret, nombreEssais, green, red, orange, yellow, green, blue, purple, pink, white, text, text6)
 
 
                     pygame.display.flip()
@@ -503,7 +509,7 @@ def mode1():
                     maListe = []
 
                 elif blueCircle.collidepoint(pos):
-                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, blue, red, orange, yellow, green, blue, purple, pink, white, text, text6)
+                    running = couleur(fenetre, ligne, maListe, codeSecret, nombreEssais, blue, red, orange, yellow, green, blue, purple, pink, white, text, text6)
 
 
                     pygame.display.flip()
@@ -514,7 +520,7 @@ def mode1():
                     maListe = []
 
                 elif purpleCircle.collidepoint(pos):
-                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, purple, red, orange, yellow, green, blue, purple, pink, white, text, text6)
+                    running = couleur(fenetre, ligne, maListe, codeSecret, nombreEssais, purple, red, orange, yellow, green, blue, purple, pink, white, text, text6)
 
 
                     pygame.display.flip()
@@ -524,7 +530,7 @@ def mode1():
                     ligne = ligne-60
                     maListe = []
                 elif pinkCircle.collidepoint(pos):
-                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, pink, red, orange, yellow, green, blue, purple, pink, white, text, text6)
+                    running = couleur(fenetre, ligne, maListe, codeSecret, nombreEssais, pink, red, orange, yellow, green, blue, purple, pink, white, text, text6)
 
 
                     pygame.display.flip()
@@ -536,7 +542,7 @@ def mode1():
 
 
                 elif whiteCircle.collidepoint(pos):
-                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, white, red, orange, yellow, green, blue, purple, pink, white, text, text6)
+                    running = couleur(fenetre, ligne, maListe, codeSecret, nombreEssais, white, red, orange, yellow, green, blue, purple, pink, white, text, text6)
 
 
                     pygame.display.flip()
@@ -564,385 +570,130 @@ def mode1():
 
 
 
-
-def mode2():
-
-    # ----Combinaison----
-    couleurs = [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8]
-    codeSecret = random.sample(couleurs, 4)  # prendre les 4 premiers
-    pygame.init()
-    fenetre = pygame.display.set_mode((1024, 768))
-    fond = pygame.image.load("Mastermind2.png").convert()
-    fenetre.blit(fond, (0,0))
-    running = True
-    handled = False
-    pos1 = True
-    pos2 = False
-    pos3 = False
-    pos4 = False
-    pressed1 = False
-    blue = (0,0,255)
-    red = (255,0,0)
-    green = (0,255,0)
-    pink = (255,144,210)
-    purple = (128,0,128)
-    yellow = (255,255,0)
-    white = (255,255,255)
-    orange = (230,126,34)
-    black = (0,0,0)
-    grey = (128,128,128)
-    ligne=682
-    font = pygame.font.SysFont ("impact", 36)
-    text = font.render("C'est gagné!", True, yellow)
-    text6 = font.render("C'est perdu!", True, yellow)
-    nombreEssais=0
-
-
-
-    maListe = []
-
-    pygame.draw.rect(fenetre, black, (256,0,512,768))
-    pygame.draw.rect(fenetre, grey, (297,51,5,660))
-    pygame.draw.rect(fenetre, grey, (297,51,389,5))
-    pygame.draw.rect(fenetre, grey, (297,706,430,5))
-    pygame.draw.rect(fenetre, grey, (681,51,5,660))
-    pygame.draw.rect(fenetre, grey, (297,111,430,5))
-    pygame.draw.rect(fenetre, grey, (727,111,5,600))
-
-    y=172
-    for loop in range(9):
-        pygame.draw.rect(fenetre, grey, (297,y,430,1))
-        y=y+60
-    font2 = pygame.font.SysFont("calibribold", 50)
-    text2 = font2.render("?", True, grey)
-    text3 = font2.render("?", True, grey)
-    text4 = font2.render("?", True, grey)
-    text5 = font2.render("?", True, grey)
-
-
-
-    fenetre.blit(text2, (335, 68))
-    fenetre.blit(text3, (432, 68))
-    fenetre.blit(text4, (529, 68))
-    fenetre.blit(text5, (626, 68))
-
-    redCircle = pygame.draw.circle(fenetre, red, (288,743), 20, 0)
-    orangeCircle = pygame.draw.circle(fenetre, orange, (352,743), 20, 0)
-    yellowCircle = pygame.draw.circle(fenetre, yellow, (416,743), 20, 0)
-    greenCircle = pygame.draw.circle(fenetre, green, (480,743), 20, 0)
-    blueCircle = pygame.draw.circle(fenetre, blue, (544,743), 20, 0)
-    purpleCircle = pygame.draw.circle(fenetre, purple, (608,743), 20, 0)
-    pinkCircle = pygame.draw.circle(fenetre, pink, (672,743), 20, 0)
-    whiteCircle = pygame.draw.circle(fenetre, white, (736,743), 20, 0)
-
-
-    height = 682
-    width = 345
-    width2 = 696
-    height2 = 692
-    for loop in range(11):
-        for loop in range(4):
-            x = width
-            pygame.draw.circle(fenetre, white, (x,height), 19, 1)
-            width = width+97
-        height = height-60
-        width = width-388
-
-    for loop in range(10):
-        pygame.draw.circle(fenetre, white, (width2,height2), 4, 1)
-        pygame.draw.circle(fenetre, white, (width2+20,height2), 4, 1)
-        pygame.draw.circle(fenetre, white, (width2,height2-20), 4, 1)
-        pygame.draw.circle(fenetre, white, (width2+20,height2-20), 4, 1)
-        height2 = height2-60
-
-
-    pygame.display.flip()
-
-    while running:
-
-        pos = pygame.mouse.get_pos()
-        wasPressed = pressed1
-        pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
-
-
-
-        if pressed1 and not wasPressed:
-            if pos1:
-                if redCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, red, (345,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos1 = False
-                    pos2 = True
-                    maListe.append(1)
-                elif orangeCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, orange, (345,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos1 = False
-                    pos2 = True
-                    maListe.append(2)
-                elif yellowCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, yellow, (345,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos1 = False
-                    pos2 = True
-                    maListe.append(3)
-                elif greenCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, green, (345,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos1 = False
-                    pos2 = True
-                    maListe.append(4)
-                elif blueCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, blue, (345,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos1 = False
-                    pos2 = True
-                    maListe.append(5)
-                elif purpleCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, purple, (345,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos1 = False
-                    pos2 = True
-                    maListe.append(6)
-                elif pinkCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, pink, (345,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos1 = False
-                    pos2 = True
-                    maListe.append(7)
-                elif whiteCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, white, (345,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos1 = False
-                    pos2 = True
-                    maListe.append(8)
-
-            elif pos2:
-                if redCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, red, (442,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos2 = False
-                    pos3 = True
-                    maListe.append(1)
-                elif orangeCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, orange, (442,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos2 = False
-                    pos3 = True
-                    maListe.append(2)
-                elif yellowCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, yellow, (442,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos2 = False
-                    pos3 = True
-                    maListe.append(3)
-                elif greenCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, green, (442,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos2 = False
-                    pos3 = True
-                    maListe.append(4)
-                elif blueCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, blue, (442,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos2 = False
-                    pos3 = True
-                    maListe.append(5)
-                elif purpleCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, purple, (442,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos2 = False
-                    pos3 = True
-                    maListe.append(6)
-                elif pinkCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, pink, (442,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos2 = False
-                    pos3 = True
-                    maListe.append(7)
-                elif whiteCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, white, (442,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos2 = False
-                    pos3 = True
-                    maListe.append(8)
-
-            elif pos3:
-                if redCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, red, (539,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos3 = False
-                    pos4 = True
-                    maListe.append(1)
-                elif orangeCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, orange, (539,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos3 = False
-                    pos4 = True
-                    maListe.append(2)
-                elif yellowCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, yellow, (539,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos3 = False
-                    pos4 = True
-                    maListe.append(3)
-                elif greenCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, green, (539,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos3 = False
-                    pos4 = True
-                    maListe.append(4)
-                elif blueCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, blue, (539,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos3 = False
-                    pos4 = True
-                    maListe.append(5)
-                elif purpleCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, purple, (539,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos3 = False
-                    pos4 = True
-                    maListe.append(6)
-                elif pinkCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, pink, (539,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos3 = False
-                    pos4 = True
-                    maListe.append(7)
-                elif whiteCircle.collidepoint(pos):
-                    pygame.draw.circle(fenetre, white, (539,ligne), 20, 0)
-                    pygame.display.flip()
-                    pos3 = False
-                    pos4 = True
-                    maListe.append(8)
-
-
-            elif pos4:
-                if redCircle.collidepoint(pos):
-                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, red, red, orange, yellow, green, blue, purple, pink, white, text, text6)
-
-
-                    pygame.display.flip()
-                    pos4 = False
-                    pos1 = True
-                    nombreEssais=nombreEssais+1
-                    ligne = ligne-60
-                    maListe = []
-
-                elif orangeCircle.collidepoint(pos):
-                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, orange, red, orange, yellow, green, blue, purple, pink, white, text, text6)
-
-
-                    pygame.display.flip()
-                    pos4 = False
-                    pos1 = True
-                    nombreEssais=nombreEssais+1
-                    ligne = ligne-60
-                    maListe = []
-
-                elif yellowCircle.collidepoint(pos):
-                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, yellow, red, orange, yellow, green, blue, purple, pink, white, text, text6)
-
-
-                    pygame.display.flip()
-                    pos4 = False
-                    pos1 = True
-                    nombreEssais=nombreEssais+1
-                    ligne = ligne-60
-                    maListe = []
-
-                elif greenCircle.collidepoint(pos):
-                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, green, red, orange, yellow, green, blue, purple, pink, white, text, text6)
-
-
-                    pygame.display.flip()
-                    pos4 = False
-                    pos1 = True
-                    nombreEssais=nombreEssais+1
-                    ligne = ligne-60
-                    maListe = []
-
-                elif blueCircle.collidepoint(pos):
-                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, blue, red, orange, yellow, green, blue, purple, pink, white, text, text6)
-
-
-                    pygame.display.flip()
-                    pos4 = False
-                    pos1 = True
-                    nombreEssais=nombreEssais+1
-                    ligne = ligne-60
-                    maListe = []
-
-                elif purpleCircle.collidepoint(pos):
-                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, purple, red, orange, yellow, green, blue, purple, pink, white, text, text6)
-
-
-                    pygame.display.flip()
-                    pos4 = False
-                    pos1 = True
-                    nombreEssais=nombreEssais+1
-                    ligne = ligne-60
-                    maListe = []
-                elif pinkCircle.collidepoint(pos):
-                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, pink, red, orange, yellow, green, blue, purple, pink, white, text, text6)
-
-
-                    pygame.display.flip()
-                    pos4 = False
-                    pos1 = True
-                    nombreEssais=nombreEssais+1
-                    ligne = ligne-60
-                    maListe = []
-
-
-                elif whiteCircle.collidepoint(pos):
-                    running = color(fenetre, ligne, maListe, codeSecret, nombreEssais, white, red, orange, yellow, green, blue, purple, pink, white, text, text6)
-
-
-                    pygame.display.flip()
-                    pos4 = False
-                    pos1 = True
-                    nombreEssais=nombreEssais+1
-                    ligne = ligne-60
-                    maListe = []
-
-
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-                pygame.quit()
-                return
-    while True:
-        for event in pygame.event.get():
-                if event.type == pygame.QUIT:
-                    running = False
-                    pygame.quit()
-                    return
-
-
+#Menu principal
 def main():
-    running=True
+    running = True
     pygame.init()
-    black=(0,0,0)
+    blue = (0,0,255)
+    red = (255,0,0)
+    green = (0,255,0)
+    pink = (255,144,210)
+    purple = (128,0,128)
+    yellow = (255,255,0)
     white = (255,255,255)
+    orange = (230,126,34)
+    lightGrey = (200,200,200)
+    grey = (128,128,128)
+    black = (0, 0, 0)
     fenetre = pygame.display.set_mode((1024, 768))
-    fond = pygame.image.load("Mastermind2.png").convert()
-    fenetre.blit(fond, (0,0))
+    couleurs1 = [1,2,3,4,5,6,7,8]
+    couleurs2 = [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8]
+
 
     while running:
 
-
-        playButton1 = pygame.draw.rect(fenetre, black, (341,200,342,128))
-        playButton2 = pygame.draw.rect(fenetre, black, (341,376,342,128))
+        playButton1 = pygame.draw.rect(fenetre, white, (341,250,342,128))
+        playButton2 = pygame.draw.rect(fenetre, white, (341,426,342,128))
         font = pygame.font.SysFont ("impact", 48)
+        fontInstructions = pygame.font.SysFont ("arial", 25)
         fontTitre = pygame.font.SysFont("impact", 85)
-        textEasy = font.render("Play Easy", True, white)
-        fenetre.blit(textEasy, (410, 232))
-        textHard = font.render("Play Hard", True, white)
-        fenetre.blit(textHard, (410, 408))
-        textTitre = fontTitre.render("MASTERMIND",True, white)
-        fenetre.blit(textTitre, (289,100))
+        textEasy = font.render("Mode Normal", True, black)
+        fenetre.blit(textEasy, (385, 282))
+        textHard = font.render("Mode Avancé", True, black)
+        fenetre.blit(textHard, (385, 458))
+
+    #MASTERMIND
+        textTitre = fontTitre.render("M",True, red)
+        fenetre.blit(textTitre, (289, 100))
+        textTitre = fontTitre.render("A",True, orange)
+        fenetre.blit(textTitre, (350, 100))
+        textTitre = fontTitre.render("S",True, yellow)
+        fenetre.blit(textTitre, (395, 100))
+        textTitre = fontTitre.render("T",True, green)
+        fenetre.blit(textTitre, (439, 100))
+        textTitre = fontTitre.render("E",True, blue)
+        fenetre.blit(textTitre, (478, 100))
+        textTitre = fontTitre.render("R",True, purple)
+        fenetre.blit(textTitre, (513, 100))
+        textTitre = fontTitre.render("M",True, pink)
+        fenetre.blit(textTitre, (559, 100))
+        textTitre = fontTitre.render("I",True, white)
+        fenetre.blit(textTitre, (620, 100))
+        textTitre = fontTitre.render("N",True, lightGrey)
+        fenetre.blit(textTitre, (644, 100))
+        textTitre = fontTitre.render("D",True, grey)
+        fenetre.blit(textTitre, (690, 100))
+        textNormal = font.render("Mode Normal", True, white)
+        fenetre.blit(textNormal, (25, 100))
+        textAvance = font.render("Mode Avancé", True, white)
+        fenetre.blit(textAvance, (739, 100))
+
+    #Instructions du mode Normal
+        textNormal1 = fontInstructions.render("Dans le mode normal", True, white)
+        fenetre.blit(textNormal1, (25, 150))
+        textNormal1 = fontInstructions.render("il faut trouver le code", True, white)
+        fenetre.blit(textNormal1, (25, 175))
+        textNormal1 = fontInstructions.render("secret en plaçant des", True, white)
+        fenetre.blit(textNormal1, (25, 200))
+        textNormal1 = fontInstructions.render("pions par combinaison", True, white)
+        fenetre.blit(textNormal1, (25, 225))
+        textNormal1 = fontInstructions.render("de quatre.", True, white)
+        fenetre.blit(textNormal1, (25, 250))
+        textNormal1 = fontInstructions.render("En cliquant sur les pions", True, white)
+        fenetre.blit(textNormal1, (25, 275))
+        textNormal1 = fontInstructions.render("en bas de l'écran, vous", True, white)
+        fenetre.blit(textNormal1, (25, 300))
+        textNormal1 = fontInstructions.render("les placerez dans la", True, white)
+        fenetre.blit(textNormal1, (25, 325))
+        textNormal1 = fontInstructions.render("prochaine position", True, white)
+        fenetre.blit(textNormal1, (25, 350))
+        textNormal1 = fontInstructions.render("disponible.", True, white)
+        fenetre.blit(textNormal1, (25, 375))
+        textNormal1 = fontInstructions.render("Quand une rangée est", True, white)
+        fenetre.blit(textNormal1, (25, 400))
+        textNormal1 = fontInstructions.render("complétée, des pions", True, white)
+        fenetre.blit(textNormal1, (25, 425))
+        textNormal1 = fontInstructions.render("apparaitront à la droite", True, white)
+        fenetre.blit(textNormal1, (25, 450))
+        textNormal1 = fontInstructions.render("de la rangée.", True, white)
+        fenetre.blit(textNormal1, (25, 475))
+        textNormal1 = fontInstructions.render("Un pion blanc signifie", True, white)
+        fenetre.blit(textNormal1, (25, 500))
+        textNormal1 = fontInstructions.render("que un des pions placés", True, white)
+        fenetre.blit(textNormal1, (25, 525))
+        textNormal1 = fontInstructions.render("est de la bonne couleure", True, white)
+        fenetre.blit(textNormal1, (25, 550))
+        textNormal1 = fontInstructions.render("mais dans la mauvaise", True, white)
+        fenetre.blit(textNormal1, (25, 575))
+        textNormal1 = fontInstructions.render("position.", True, white)
+        fenetre.blit(textNormal1, (25, 600))
+        textNormal1 = fontInstructions.render("Tandis qu'un pion rouge", True, white)
+        fenetre.blit(textNormal1, (25, 625))
+        textNormal1 = fontInstructions.render("signifie qu'un pion est", True, white)
+        fenetre.blit(textNormal1, (25, 650))
+        textNormal1 = fontInstructions.render("de la bonne couleure et", True, white)
+        fenetre.blit(textNormal1, (25, 675))
+        textNormal1 = fontInstructions.render("dans la bonne position.", True, white)
+        fenetre.blit(textNormal1, (25, 700))
+
+    #Instructions du mode avancé
+        textAvance1 = fontInstructions.render("Dans le mode avancé le", True, white)
+        fenetre.blit(textAvance1, (739, 150))
+        textAvance1 = fontInstructions.render("principe est le même que", True, white)
+        fenetre.blit(textAvance1, (739, 175))
+        textAvance1 = fontInstructions.render("dans le mode normal", True, white)
+        fenetre.blit(textAvance1, (739, 200))
+        textAvance1 = fontInstructions.render("sauf qu'il est possible", True, white)
+        fenetre.blit(textAvance1, (739, 225))
+        textAvance1 = fontInstructions.render("qu'il y ait plusieurs fois la", True, white)
+        fenetre.blit(textAvance1, (739, 250))
+        textAvance1 = fontInstructions.render("même couleure dans la", True, white)
+        fenetre.blit(textAvance1, (739, 275))
+        textAvance1 = fontInstructions.render("combinaison à trouver.", True, white)
+        fenetre.blit(textAvance1, (739, 300))
+
+
+
 
 
         pygame.display.flip()
@@ -950,11 +701,10 @@ def main():
         pos = pygame.mouse.get_pos()
         if pressed1:
             if playButton1.collidepoint(pos):
-                mode()
+                mode(couleurs1)
                 return
             elif playButton2.collidepoint(pos):
-                mode2()
-
+                mode(couleurs2)
 
 
         for event in pygame.event.get():
