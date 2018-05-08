@@ -518,7 +518,7 @@ def mode(couleurs):
 ##################################################################################################################################################################################################################################################
 
 
-#Fonction couleur qui est executée dans la fonction
+#Fonction couleur qui est executée dans la fonction mode
 def couleur(fenetre, ligne, maListe, codeSecret, nombreEssais, color, red, orange, yellow, green, blue, purple, pink, white, text, text6):    #On fait une liste d'arguments qui vont être utilisés dans d'autres fonctions plus tard
     pygame.draw.circle(fenetre, color, (636,ligne), 20, 0)  #Dessine un pion à l'emplacement 4 de la ligne ligne+x de la couleure mise en argument
 
@@ -543,56 +543,56 @@ def couleur(fenetre, ligne, maListe, codeSecret, nombreEssais, color, red, orang
     bonnePosition, bonneCouleur = sequence(maListe, codeSecret) #Associe les variables bonnePosition et bonneCouleur aux valeurs produites par la fonction sequence
 
     #Permet de placer les pions blancs et rouges pour vérifier si les pions placés sont bons ou pas
-    if bonnePosition==0 and bonneCouleur==1:
+    if bonnePosition == 0 and bonneCouleur == 1:
         pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-    elif bonnePosition==0 and bonneCouleur==2:
+    elif bonnePosition == 0 and bonneCouleur == 2:
         pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-    elif bonnePosition==0 and bonneCouleur==3:
+    elif bonnePosition == 0 and bonneCouleur == 3:
         pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-    elif bonnePosition==0 and bonneCouleur==4:
+    elif bonnePosition == 0 and bonneCouleur == 4:
         pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
         pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-    elif bonnePosition==1 and bonneCouleur==0:
+    elif bonnePosition == 1 and bonneCouleur == 0:
         pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-    elif bonnePosition==1 and bonneCouleur==1:
+    elif bonnePosition == 1 and bonneCouleur == 1:
         pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-    elif bonnePosition==1 and bonneCouleur==2:
+    elif bonnePosition == 1 and bonneCouleur == 2:
         pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-    elif bonnePosition==1 and bonneCouleur==3:
+    elif bonnePosition == 1 and bonneCouleur == 3:
         pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
         pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-    elif bonnePosition==2 and bonneCouleur==0:
+    elif bonnePosition == 2 and bonneCouleur == 0:
         pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-    elif bonnePosition==2 and bonneCouleur==1:
+    elif bonnePosition == 2 and bonneCouleur == 1:
         pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-    elif bonnePosition==2 and bonneCouleur==2:
+    elif bonnePosition == 2 and bonneCouleur == 2:
         pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
         pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-    elif bonnePosition==3 and bonneCouleur==0:
+    elif bonnePosition == 3 and bonneCouleur == 0:
         pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-    elif bonnePosition==3 and bonneCouleur==1:
+    elif bonnePosition == 3 and bonneCouleur == 1:
         pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
         pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-    elif bonnePosition==4 and bonneCouleur==0:
+    elif bonnePosition == 4 and bonneCouleur == 0:
         pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
         pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
@@ -603,43 +603,43 @@ def couleur(fenetre, ligne, maListe, codeSecret, nombreEssais, color, red, orang
         fenetre.blit(text, (421, 8))    #.blit permet de placer le texte, l'image, etc à partir de la position (x, y) indiquée
         #Permet de dessiner le bon code à l'emplacement des points d'interogation une fois que le bon code est trouvé
         for loop in range (4):
-            if maListe[loop]==1:
+            if maListe[loop] == 1:
                 pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-            elif maListe[loop]==2:
+            elif maListe[loop] == 2:
                 pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-            elif maListe[loop]==3:
+            elif maListe[loop] == 3:
                 pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-            elif maListe[loop]==4:
+            elif maListe[loop] == 4:
                 pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-            elif maListe[loop]==5:
+            elif maListe[loop] == 5:
                 pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-            elif maListe[loop]==6:
+            elif maListe[loop] == 6:
                 pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-            elif maListe[loop]==7:
+            elif maListe[loop] == 7:
                 pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-            elif maListe[loop]==8:
+            elif maListe[loop] == 8:
                 pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
         return False
 
     #Si le bon code n'est pas trouvé au bout de 10 essais alors ce programme est executé
-    elif nombreEssais==9:
+    elif nombreEssais == 9:
         fenetre.blit(text6, (421,8))
         for loop in range (4):
-            if codeSecret[loop]==1:
+            if codeSecret[loop] == 1:
                 pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-            elif codeSecret[loop]==2:
+            elif codeSecret[loop] == 2:
                 pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-            elif codeSecret[loop]==3:
+            elif codeSecret[loop] == 3:
                 pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-            elif codeSecret[loop]==4:
+            elif codeSecret[loop] == 4:
                 pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-            elif codeSecret[loop]==5:
+            elif codeSecret[loop] == 5:
                 pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-            elif codeSecret[loop]==6:
+            elif codeSecret[loop] == 6:
                 pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-            elif codeSecret[loop]==7:
+            elif codeSecret[loop] == 7:
                 pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-            elif codeSecret[loop]==8:
+            elif codeSecret[loop] == 8:
                 pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
 
         return False
@@ -652,69 +652,74 @@ def couleur(fenetre, ligne, maListe, codeSecret, nombreEssais, color, red, orang
 #Fonction qui sera executée dans la fonction couleur
 def sequence(maListe, codeSecret):
 
-    A= codeSecret[0]
-    B= codeSecret[1]
-    C= codeSecret[2]
-    D= codeSecret[3]
-    W=maListe[0]
-    X=maListe[1]
-    Y=maListe[2]
-    Z=maListe[3]
-    bonnePosition=0
-    if A==W:
-    	bonnePosition=bonnePosition+1
+    #Chaque couleure du code secret est associée à une variable pour faciliter les comparaisons
+    A = codeSecret[0]
+    B = codeSecret[1]
+    C = codeSecret[2]
+    D = codeSecret[3]
 
-    if B==X:
-    	bonnePosition=bonnePosition+1
+    #Pareil ici mais pour la liste du joueur
+    W = maListe[0]
+    X = maListe[1]
+    Y = maListe[2]
+    Z = maListe[3]
+    bonnePosition = 0
 
-    if C==Y:
-    	bonnePosition=bonnePosition+1
+    #Savoir combien de pions sont à la bonne position et de la bonne couleure
+    if A == W:
+    	bonnePosition = bonnePosition+1  #On compare les 2 listes pour savoir si il y a 2 couleurs à la même position
 
-    if D==Z:
-    	bonnePosition=bonnePosition+1
+    if B == X:
+    	bonnePosition = bonnePosition+1
 
+    if C == Y:
+    	bonnePosition = bonnePosition+1
 
-#------------Savoir combien de couleurs sont bonnes---------------------------------------------------------------------------------------------------------------------------
-    bonneCouleur=0
-    if A==X:
-    	bonneCouleur=bonneCouleur+1
-
-    if A==Y:
-    	bonneCouleur=bonneCouleur+1
-
-    if A==Z:
-    	bonneCouleur=bonneCouleur+1
-
-    if B==W:
-    	bonneCouleur=bonneCouleur+1
-
-    if B==Y:
-    	bonneCouleur=bonneCouleur+1
-
-    if B==Z:
-    	bonneCouleur=bonneCouleur+1
-
-    if C==W:
-    	bonneCouleur=bonneCouleur+1
-
-    if C==X:
-    	bonneCouleur=bonneCouleur+1
-
-    if C==Z:
-    	bonneCouleur=bonneCouleur+1
-
-    if D==W:
-    	bonneCouleur=bonneCouleur+1
-
-    if D==X:
-    	bonneCouleur=bonneCouleur+1
-
-    if D==Y:
-    	bonneCouleur=bonneCouleur+1
+    if D == Z:
+    	bonnePosition = bonnePosition+1
 
 
+    #Savoir combien de pions sont de la bonne couleure mais dans la mauvaise position
+    bonneCouleur = 0
+    if A == X:
+    	bonneCouleur = bonneCouleur+1    #On compare les couleures des 2 listes. Si on toruve une des couleur d'une liste dans l'autre alors rajouter 1 à la variable bonneCouleur
 
-    return bonnePosition, bonneCouleur
+    if A == Y:
+    	bonneCouleur = bonneCouleur+1
+
+    if A == Z:
+    	bonneCouleur = bonneCouleur+1
+
+    if B == W:
+    	bonneCouleur = bonneCouleur+1
+
+    if B == Y:
+    	bonneCouleur = bonneCouleur+1
+
+    if B == Z:
+    	bonneCouleur = bonneCouleur+1
+
+    if C == W:
+    	bonneCouleur = bonneCouleur+1
+
+    if C == X:
+    	bonneCouleur = bonneCouleur+1
+
+    if C == Z:
+    	bonneCouleur = bonneCouleur+1
+
+    if D == W:
+    	bonneCouleur = bonneCouleur+1
+
+    if D == X:
+    	bonneCouleur = bonneCouleur+1
+
+    if D == Y:
+    	bonneCouleur = bonneCouleur+1
+
+
+
+    return bonnePosition, bonneCouleur  #Les valeurs trouvées pour les positions sont relevées
 
 
 
