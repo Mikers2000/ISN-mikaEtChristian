@@ -649,7 +649,7 @@ def couleur(fenetre, ligne, maListe, codeSecret, nombreEssais, color, red, orang
 
 ##################################################################################################################################################################################################################################################
 
-#Fonction qui sera executée
+#Fonction qui sera executée dans la fonction couleur
 def sequence(maListe, codeSecret):
 
     A= codeSecret[0]
