@@ -4,208 +4,148 @@
 import pygame   #Permet d'utiliser pygame
 import random   #Permet d'utiliser la fonction hasard
 
+#Fonction qui sera executée quand on lance le programme et qui dessinera le menu principal
+def main():
+    running = True
+    pygame.init()
+    blue = (0,0,255)
+    red = (255,0,0)
+    green = (0,255,0)
+    pink = (255,144,210)
+    purple = (128,0,128)
+    yellow = (255,255,0)
+    white = (255,255,255)
+    orange = (230,126,34)
+    lightGrey = (200,200,200)
+    grey = (128,128,128)
+    black = (0, 0, 0)
+    fenetre = pygame.display.set_mode((1024, 768))
+    couleurs1 = [1,2,3,4,5,6,7,8]
+    couleurs2 = [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8]
 
 
+    while running:
 
-#Fonction couleur qui est executée dans la fonction
-def couleur(fenetre, ligne, maListe, codeSecret, nombreEssais, color, red, orange, yellow, green, blue, purple, pink, white, text, text6):    #On fait une liste d'arguments qui vont être utilisés dans d'autres fonctions plus tard
-    pygame.draw.circle(fenetre, color, (636,ligne), 20, 0)  #Dessine un pion à l'emplacement 4 de la ligne ligne+x de la couleure mise en argument
+        playButton1 = pygame.draw.rect(fenetre, white, (341,250,342,128))
+        playButton2 = pygame.draw.rect(fenetre, white, (341,426,342,128))
+        font = pygame.font.SysFont ("impact", 48)
+        fontInstructions = pygame.font.SysFont ("arial", 25)
+        fontTitre = pygame.font.SysFont("impact", 85)
+        textEasy = font.render("Mode Normal", True, black)
+        fenetre.blit(textEasy, (385, 282))
+        textHard = font.render("Mode Avancé", True, black)
+        fenetre.blit(textHard, (385, 458))
 
-#Met un chiffre en dèrnière position de la liste maListe qui correspond à la couleure du pion placé en dèrnière position
-    if color == red:
-        maListe.append(1)
-    if color == orange:
-        maListe.append(2)
-    if color == yellow:
-        maListe.append(3)
-    if color == green:
-        maListe.append(4)
-    if color == blue:
-        maListe.append(5)
-    if color == purple:
-        maListe.append(6)
-    if color == pink:
-        maListe.append(7)
-    if color == white:
-        maListe.append(8)
-    bonneposition, bonnecouleur = sequence(maListe, codeSecret)
+    #MASTERMIND
+        textTitre = fontTitre.render("M",True, red)
+        fenetre.blit(textTitre, (289, 100))
+        textTitre = fontTitre.render("A",True, orange)
+        fenetre.blit(textTitre, (350, 100))
+        textTitre = fontTitre.render("S",True, yellow)
+        fenetre.blit(textTitre, (395, 100))
+        textTitre = fontTitre.render("T",True, green)
+        fenetre.blit(textTitre, (439, 100))
+        textTitre = fontTitre.render("E",True, blue)
+        fenetre.blit(textTitre, (478, 100))
+        textTitre = fontTitre.render("R",True, purple)
+        fenetre.blit(textTitre, (513, 100))
+        textTitre = fontTitre.render("M",True, pink)
+        fenetre.blit(textTitre, (559, 100))
+        textTitre = fontTitre.render("I",True, white)
+        fenetre.blit(textTitre, (620, 100))
+        textTitre = fontTitre.render("N",True, lightGrey)
+        fenetre.blit(textTitre, (644, 100))
+        textTitre = fontTitre.render("D",True, grey)
+        fenetre.blit(textTitre, (690, 100))
+        textNormal = font.render("Mode Normal", True, white)
+        fenetre.blit(textNormal, (25, 100))
+        textAvance = font.render("Mode Avancé", True, white)
+        fenetre.blit(textAvance, (739, 100))
 
-#Permet de placer les pions blancs et rouges pour vérifier si les pions placés sont bons ou pas
-    if bonneposition==0 and bonnecouleur==1:
-        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-    elif bonneposition==0 and bonnecouleur==2:
-        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-    elif bonneposition==0 and bonnecouleur==3:
-        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-    elif bonneposition==0 and bonnecouleur==4:
-        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-    elif bonneposition==1 and bonnecouleur==0:
-        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-    elif bonneposition==1 and bonnecouleur==1:
-        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-    elif bonneposition==1 and bonnecouleur==2:
-        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-    elif bonneposition==1 and bonnecouleur==3:
-        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-    elif bonneposition==2 and bonnecouleur==0:
-        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-    elif bonneposition==2 and bonnecouleur==1:
-        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-    elif bonneposition==2 and bonnecouleur==2:
-        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
-        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-    elif bonneposition==3 and bonnecouleur==0:
-        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-    elif bonneposition==3 and bonnecouleur==1:
-        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
-    elif bonneposition==4 and bonnecouleur==0:
-        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
-        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
-        pygame.draw.circle(fenetre, red, (716, ligne+10), 5, 0)
+    #Instructions du mode Normal
+        textNormal1 = fontInstructions.render("Dans le mode normal", True, white)
+        fenetre.blit(textNormal1, (25, 150))
+        textNormal1 = fontInstructions.render("il faut trouver le code", True, white)
+        fenetre.blit(textNormal1, (25, 175))
+        textNormal1 = fontInstructions.render("secret en plaçant des", True, white)
+        fenetre.blit(textNormal1, (25, 200))
+        textNormal1 = fontInstructions.render("pions par combinaison", True, white)
+        fenetre.blit(textNormal1, (25, 225))
+        textNormal1 = fontInstructions.render("de quatre.", True, white)
+        fenetre.blit(textNormal1, (25, 250))
+        textNormal1 = fontInstructions.render("En cliquant sur les pions", True, white)
+        fenetre.blit(textNormal1, (25, 275))
+        textNormal1 = fontInstructions.render("en bas de l'écran, vous", True, white)
+        fenetre.blit(textNormal1, (25, 300))
+        textNormal1 = fontInstructions.render("les placerez dans la", True, white)
+        fenetre.blit(textNormal1, (25, 325))
+        textNormal1 = fontInstructions.render("prochaine position", True, white)
+        fenetre.blit(textNormal1, (25, 350))
+        textNormal1 = fontInstructions.render("disponible.", True, white)
+        fenetre.blit(textNormal1, (25, 375))
+        textNormal1 = fontInstructions.render("Quand une rangée est", True, white)
+        fenetre.blit(textNormal1, (25, 400))
+        textNormal1 = fontInstructions.render("complétée, des pions", True, white)
+        fenetre.blit(textNormal1, (25, 425))
+        textNormal1 = fontInstructions.render("apparaitront à la droite", True, white)
+        fenetre.blit(textNormal1, (25, 450))
+        textNormal1 = fontInstructions.render("de la rangée.", True, white)
+        fenetre.blit(textNormal1, (25, 475))
+        textNormal1 = fontInstructions.render("Un pion blanc signifie", True, white)
+        fenetre.blit(textNormal1, (25, 500))
+        textNormal1 = fontInstructions.render("que un des pions placés", True, white)
+        fenetre.blit(textNormal1, (25, 525))
+        textNormal1 = fontInstructions.render("est de la bonne couleure", True, white)
+        fenetre.blit(textNormal1, (25, 550))
+        textNormal1 = fontInstructions.render("mais dans la mauvaise", True, white)
+        fenetre.blit(textNormal1, (25, 575))
+        textNormal1 = fontInstructions.render("position.", True, white)
+        fenetre.blit(textNormal1, (25, 600))
+        textNormal1 = fontInstructions.render("Tandis qu'un pion rouge", True, white)
+        fenetre.blit(textNormal1, (25, 625))
+        textNormal1 = fontInstructions.render("signifie qu'un pion est", True, white)
+        fenetre.blit(textNormal1, (25, 650))
+        textNormal1 = fontInstructions.render("de la bonne couleure et", True, white)
+        fenetre.blit(textNormal1, (25, 675))
+        textNormal1 = fontInstructions.render("dans la bonne position.", True, white)
+        fenetre.blit(textNormal1, (25, 700))
 
-#Si le bon code est entré alors ce programme est executé
-    if maListe == codeSecret:
-        fenetre.blit(text, (421, 8))    #.blit permet de placer le texte, l'image, etc à partir de la position (x, y) indiquée
-#Permet de dessiner le bon code à l'emplacement des points d'interogation une fois que le bon code est trouvé
-        for loop in range (4):
-            if maListe[loop]==1:
-                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-            elif maListe[loop]==2:
-                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-            elif maListe[loop]==3:
-                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-            elif maListe[loop]==4:
-                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-            elif maListe[loop]==5:
-                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-            elif maListe[loop]==6:
-                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-            elif maListe[loop]==7:
-                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-            elif maListe[loop]==8:
-                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-        return False
-
-#Si le bon code n'est pas trouvé au bout de 10 essais alors ce programme est executé
-    elif nombreEssais==9:
-        fenetre.blit(text6, (421,8))
-        for loop in range (4):
-            if codeSecret[loop]==1:
-                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
-            elif codeSecret[loop]==2:
-                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
-            elif codeSecret[loop]==3:
-                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
-            elif codeSecret[loop]==4:
-                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
-            elif codeSecret[loop]==5:
-                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
-            elif codeSecret[loop]==6:
-                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
-            elif codeSecret[loop]==7:
-                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
-            elif codeSecret[loop]==8:
-                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
-
-        return False
-    else:
-        return True
+    #Instructions du mode avancé
+        textAvance1 = fontInstructions.render("Dans le mode avancé le", True, white)
+        fenetre.blit(textAvance1, (739, 150))
+        textAvance1 = fontInstructions.render("principe est le même que", True, white)
+        fenetre.blit(textAvance1, (739, 175))
+        textAvance1 = fontInstructions.render("dans le mode normal", True, white)
+        fenetre.blit(textAvance1, (739, 200))
+        textAvance1 = fontInstructions.render("sauf qu'il est possible", True, white)
+        fenetre.blit(textAvance1, (739, 225))
+        textAvance1 = fontInstructions.render("qu'il y ait plusieurs fois la", True, white)
+        fenetre.blit(textAvance1, (739, 250))
+        textAvance1 = fontInstructions.render("même couleure dans la", True, white)
+        fenetre.blit(textAvance1, (739, 275))
+        textAvance1 = fontInstructions.render("combinaison à trouver.", True, white)
+        fenetre.blit(textAvance1, (739, 300))
 
 
 
 
 
+        pygame.display.flip()
+        pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()   #Permet de déterminer si les boutons de la souris sont cliqués
+        pos = pygame.mouse.get_pos()    #Permet de déterminer la position de la souris
+        if pressed1:                    #Si on fait un clic gauche
+            if playButton1.collidepoint(pos): #Et que le curseur est sur le bouton "Mode Normal"
+                mode(couleurs1)               #Alors on exécute la fonction mode avec couleurs = couleurs1
+                return
+            elif playButton2.collidepoint(pos): #Par ailleurs si le curseur est sur le bouton "Mode Avancé"
+                mode(couleurs2)                 #Alors on exécute la fonction mode avec couleurs = couleurs2
+                return
 
-def sequence(maListe, codeSecret):
-
-    A= codeSecret[0]
-    B= codeSecret[1]
-    C= codeSecret[2]
-    D= codeSecret[3]
-    W=maListe[0]
-    X=maListe[1]
-    Y=maListe[2]
-    Z=maListe[3]
-    bonneposition=0
-    if A==W:
-    	bonneposition=bonneposition+1
-
-    if B==X:
-    	bonneposition=bonneposition+1
-
-    if C==Y:
-    	bonneposition=bonneposition+1
-
-    if D==Z:
-    	bonneposition=bonneposition+1
-
-
-#------------Savoir combien de couleurs sont bonnes---------------------------------------------------------------------------------------------------------------------------
-    bonnecouleur=0
-    if A==X:
-    	bonnecouleur=bonnecouleur+1
-
-    if A==Y:
-    	bonnecouleur=bonnecouleur+1
-
-    if A==Z:
-    	bonnecouleur=bonnecouleur+1
-
-    if B==W:
-    	bonnecouleur=bonnecouleur+1
-
-    if B==Y:
-    	bonnecouleur=bonnecouleur+1
-
-    if B==Z:
-    	bonnecouleur=bonnecouleur+1
-
-    if C==W:
-    	bonnecouleur=bonnecouleur+1
-
-    if C==X:
-    	bonnecouleur=bonnecouleur+1
-
-    if C==Z:
-    	bonnecouleur=bonnecouleur+1
-
-    if D==W:
-    	bonnecouleur=bonnecouleur+1
-
-    if D==X:
-    	bonnecouleur=bonnecouleur+1
-
-    if D==Y:
-    	bonnecouleur=bonnecouleur+1
-
-
-
-    return bonneposition, bonnecouleur
-
-
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+                pygame.quit()
+                return
 
 
 
@@ -568,151 +508,210 @@ def mode(couleurs):
 
 
 
+#Fonction qui sera executée
+def sequence(maListe, codeSecret):
+
+    A= codeSecret[0]
+    B= codeSecret[1]
+    C= codeSecret[2]
+    D= codeSecret[3]
+    W=maListe[0]
+    X=maListe[1]
+    Y=maListe[2]
+    Z=maListe[3]
+    bonneposition=0
+    if A==W:
+    	bonneposition=bonneposition+1
+
+    if B==X:
+    	bonneposition=bonneposition+1
+
+    if C==Y:
+    	bonneposition=bonneposition+1
+
+    if D==Z:
+    	bonneposition=bonneposition+1
 
 
-#Menu principal
-def main():
-    running = True
-    pygame.init()
-    blue = (0,0,255)
-    red = (255,0,0)
-    green = (0,255,0)
-    pink = (255,144,210)
-    purple = (128,0,128)
-    yellow = (255,255,0)
-    white = (255,255,255)
-    orange = (230,126,34)
-    lightGrey = (200,200,200)
-    grey = (128,128,128)
-    black = (0, 0, 0)
-    fenetre = pygame.display.set_mode((1024, 768))
-    couleurs1 = [1,2,3,4,5,6,7,8]
-    couleurs2 = [1,1,1,1,2,2,2,2,3,3,3,3,4,4,4,4,5,5,5,5,6,6,6,6,7,7,7,7,8,8,8,8]
+#------------Savoir combien de couleurs sont bonnes---------------------------------------------------------------------------------------------------------------------------
+    bonnecouleur=0
+    if A==X:
+    	bonnecouleur=bonnecouleur+1
+
+    if A==Y:
+    	bonnecouleur=bonnecouleur+1
+
+    if A==Z:
+    	bonnecouleur=bonnecouleur+1
+
+    if B==W:
+    	bonnecouleur=bonnecouleur+1
+
+    if B==Y:
+    	bonnecouleur=bonnecouleur+1
+
+    if B==Z:
+    	bonnecouleur=bonnecouleur+1
+
+    if C==W:
+    	bonnecouleur=bonnecouleur+1
+
+    if C==X:
+    	bonnecouleur=bonnecouleur+1
+
+    if C==Z:
+    	bonnecouleur=bonnecouleur+1
+
+    if D==W:
+    	bonnecouleur=bonnecouleur+1
+
+    if D==X:
+    	bonnecouleur=bonnecouleur+1
+
+    if D==Y:
+    	bonnecouleur=bonnecouleur+1
 
 
-    while running:
 
-        playButton1 = pygame.draw.rect(fenetre, white, (341,250,342,128))
-        playButton2 = pygame.draw.rect(fenetre, white, (341,426,342,128))
-        font = pygame.font.SysFont ("impact", 48)
-        fontInstructions = pygame.font.SysFont ("arial", 25)
-        fontTitre = pygame.font.SysFont("impact", 85)
-        textEasy = font.render("Mode Normal", True, black)
-        fenetre.blit(textEasy, (385, 282))
-        textHard = font.render("Mode Avancé", True, black)
-        fenetre.blit(textHard, (385, 458))
-
-    #MASTERMIND
-        textTitre = fontTitre.render("M",True, red)
-        fenetre.blit(textTitre, (289, 100))
-        textTitre = fontTitre.render("A",True, orange)
-        fenetre.blit(textTitre, (350, 100))
-        textTitre = fontTitre.render("S",True, yellow)
-        fenetre.blit(textTitre, (395, 100))
-        textTitre = fontTitre.render("T",True, green)
-        fenetre.blit(textTitre, (439, 100))
-        textTitre = fontTitre.render("E",True, blue)
-        fenetre.blit(textTitre, (478, 100))
-        textTitre = fontTitre.render("R",True, purple)
-        fenetre.blit(textTitre, (513, 100))
-        textTitre = fontTitre.render("M",True, pink)
-        fenetre.blit(textTitre, (559, 100))
-        textTitre = fontTitre.render("I",True, white)
-        fenetre.blit(textTitre, (620, 100))
-        textTitre = fontTitre.render("N",True, lightGrey)
-        fenetre.blit(textTitre, (644, 100))
-        textTitre = fontTitre.render("D",True, grey)
-        fenetre.blit(textTitre, (690, 100))
-        textNormal = font.render("Mode Normal", True, white)
-        fenetre.blit(textNormal, (25, 100))
-        textAvance = font.render("Mode Avancé", True, white)
-        fenetre.blit(textAvance, (739, 100))
-
-    #Instructions du mode Normal
-        textNormal1 = fontInstructions.render("Dans le mode normal", True, white)
-        fenetre.blit(textNormal1, (25, 150))
-        textNormal1 = fontInstructions.render("il faut trouver le code", True, white)
-        fenetre.blit(textNormal1, (25, 175))
-        textNormal1 = fontInstructions.render("secret en plaçant des", True, white)
-        fenetre.blit(textNormal1, (25, 200))
-        textNormal1 = fontInstructions.render("pions par combinaison", True, white)
-        fenetre.blit(textNormal1, (25, 225))
-        textNormal1 = fontInstructions.render("de quatre.", True, white)
-        fenetre.blit(textNormal1, (25, 250))
-        textNormal1 = fontInstructions.render("En cliquant sur les pions", True, white)
-        fenetre.blit(textNormal1, (25, 275))
-        textNormal1 = fontInstructions.render("en bas de l'écran, vous", True, white)
-        fenetre.blit(textNormal1, (25, 300))
-        textNormal1 = fontInstructions.render("les placerez dans la", True, white)
-        fenetre.blit(textNormal1, (25, 325))
-        textNormal1 = fontInstructions.render("prochaine position", True, white)
-        fenetre.blit(textNormal1, (25, 350))
-        textNormal1 = fontInstructions.render("disponible.", True, white)
-        fenetre.blit(textNormal1, (25, 375))
-        textNormal1 = fontInstructions.render("Quand une rangée est", True, white)
-        fenetre.blit(textNormal1, (25, 400))
-        textNormal1 = fontInstructions.render("complétée, des pions", True, white)
-        fenetre.blit(textNormal1, (25, 425))
-        textNormal1 = fontInstructions.render("apparaitront à la droite", True, white)
-        fenetre.blit(textNormal1, (25, 450))
-        textNormal1 = fontInstructions.render("de la rangée.", True, white)
-        fenetre.blit(textNormal1, (25, 475))
-        textNormal1 = fontInstructions.render("Un pion blanc signifie", True, white)
-        fenetre.blit(textNormal1, (25, 500))
-        textNormal1 = fontInstructions.render("que un des pions placés", True, white)
-        fenetre.blit(textNormal1, (25, 525))
-        textNormal1 = fontInstructions.render("est de la bonne couleure", True, white)
-        fenetre.blit(textNormal1, (25, 550))
-        textNormal1 = fontInstructions.render("mais dans la mauvaise", True, white)
-        fenetre.blit(textNormal1, (25, 575))
-        textNormal1 = fontInstructions.render("position.", True, white)
-        fenetre.blit(textNormal1, (25, 600))
-        textNormal1 = fontInstructions.render("Tandis qu'un pion rouge", True, white)
-        fenetre.blit(textNormal1, (25, 625))
-        textNormal1 = fontInstructions.render("signifie qu'un pion est", True, white)
-        fenetre.blit(textNormal1, (25, 650))
-        textNormal1 = fontInstructions.render("de la bonne couleure et", True, white)
-        fenetre.blit(textNormal1, (25, 675))
-        textNormal1 = fontInstructions.render("dans la bonne position.", True, white)
-        fenetre.blit(textNormal1, (25, 700))
-
-    #Instructions du mode avancé
-        textAvance1 = fontInstructions.render("Dans le mode avancé le", True, white)
-        fenetre.blit(textAvance1, (739, 150))
-        textAvance1 = fontInstructions.render("principe est le même que", True, white)
-        fenetre.blit(textAvance1, (739, 175))
-        textAvance1 = fontInstructions.render("dans le mode normal", True, white)
-        fenetre.blit(textAvance1, (739, 200))
-        textAvance1 = fontInstructions.render("sauf qu'il est possible", True, white)
-        fenetre.blit(textAvance1, (739, 225))
-        textAvance1 = fontInstructions.render("qu'il y ait plusieurs fois la", True, white)
-        fenetre.blit(textAvance1, (739, 250))
-        textAvance1 = fontInstructions.render("même couleure dans la", True, white)
-        fenetre.blit(textAvance1, (739, 275))
-        textAvance1 = fontInstructions.render("combinaison à trouver.", True, white)
-        fenetre.blit(textAvance1, (739, 300))
+    return bonneposition, bonnecouleur
 
 
 
 
 
-        pygame.display.flip()
-        pressed1, pressed2, pressed3 = pygame.mouse.get_pressed()
-        pos = pygame.mouse.get_pos()
-        if pressed1:
-            if playButton1.collidepoint(pos):
-                mode(couleurs1)
-                return
-            elif playButton2.collidepoint(pos):
-                mode(couleurs2)
 
 
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                running = False
-                pygame.quit()
-                return
+#Fonction couleur qui est executée dans la fonction
+def couleur(fenetre, ligne, maListe, codeSecret, nombreEssais, color, red, orange, yellow, green, blue, purple, pink, white, text, text6):    #On fait une liste d'arguments qui vont être utilisés dans d'autres fonctions plus tard
+    pygame.draw.circle(fenetre, color, (636,ligne), 20, 0)  #Dessine un pion à l'emplacement 4 de la ligne ligne+x de la couleure mise en argument
+
+#Met un chiffre en dèrnière position de la liste maListe qui correspond à la couleure du pion placé en dèrnière position
+    if color == red:
+        maListe.append(1)
+    if color == orange:
+        maListe.append(2)
+    if color == yellow:
+        maListe.append(3)
+    if color == green:
+        maListe.append(4)
+    if color == blue:
+        maListe.append(5)
+    if color == purple:
+        maListe.append(6)
+    if color == pink:
+        maListe.append(7)
+    if color == white:
+        maListe.append(8)
+    bonneposition, bonnecouleur = sequence(maListe, codeSecret)
+
+#Permet de placer les pions blancs et rouges pour vérifier si les pions placés sont bons ou pas
+    if bonneposition==0 and bonnecouleur==1:
+        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
+    elif bonneposition==0 and bonnecouleur==2:
+        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
+    elif bonneposition==0 and bonnecouleur==3:
+        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
+    elif bonneposition==0 and bonnecouleur==4:
+        pygame.draw.circle(fenetre, white, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
+    elif bonneposition==1 and bonnecouleur==0:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+    elif bonneposition==1 and bonnecouleur==1:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
+    elif bonneposition==1 and bonnecouleur==2:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
+    elif bonneposition==1 and bonnecouleur==3:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
+    elif bonneposition==2 and bonnecouleur==0:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
+    elif bonneposition==2 and bonnecouleur==1:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
+    elif bonneposition==2 and bonnecouleur==2:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, white, (696, ligne+10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
+    elif bonneposition==3 and bonnecouleur==0:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
+    elif bonneposition==3 and bonnecouleur==1:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
+        pygame.draw.circle(fenetre, white, (716, ligne+10), 5, 0)
+    elif bonneposition==4 and bonnecouleur==0:
+        pygame.draw.circle(fenetre, red, (696, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (716, ligne-10), 5, 0)
+        pygame.draw.circle(fenetre, red, (696, ligne+10), 5, 0)
+        pygame.draw.circle(fenetre, red, (716, ligne+10), 5, 0)
+
+#Si le bon code est entré alors ce programme est executé
+    if maListe == codeSecret:
+        fenetre.blit(text, (421, 8))    #.blit permet de placer le texte, l'image, etc à partir de la position (x, y) indiquée
+#Permet de dessiner le bon code à l'emplacement des points d'interogation une fois que le bon code est trouvé
+        for loop in range (4):
+            if maListe[loop]==1:
+                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
+            elif maListe[loop]==2:
+                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
+            elif maListe[loop]==3:
+                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
+            elif maListe[loop]==4:
+                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
+            elif maListe[loop]==5:
+                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
+            elif maListe[loop]==6:
+                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
+            elif maListe[loop]==7:
+                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
+            elif maListe[loop]==8:
+                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
+        return False
+
+#Si le bon code n'est pas trouvé au bout de 10 essais alors ce programme est executé
+    elif nombreEssais==9:
+        fenetre.blit(text6, (421,8))
+        for loop in range (4):
+            if codeSecret[loop]==1:
+                pygame.draw.circle(fenetre, red, (345+loop*97, 82), 20, 0)
+            elif codeSecret[loop]==2:
+                pygame.draw.circle(fenetre, orange, (345+loop*97, 82), 20, 0)
+            elif codeSecret[loop]==3:
+                pygame.draw.circle(fenetre, yellow, (345+loop*97, 82), 20, 0)
+            elif codeSecret[loop]==4:
+                pygame.draw.circle(fenetre, green, (345+loop*97, 82), 20, 0)
+            elif codeSecret[loop]==5:
+                pygame.draw.circle(fenetre, blue, (345+loop*97, 82), 20, 0)
+            elif codeSecret[loop]==6:
+                pygame.draw.circle(fenetre, purple, (345+loop*97, 82), 20, 0)
+            elif codeSecret[loop]==7:
+                pygame.draw.circle(fenetre, pink, (345+loop*97, 82), 20, 0)
+            elif codeSecret[loop]==8:
+                pygame.draw.circle(fenetre, white, (345+loop*97, 82), 20, 0)
+
+        return False
+    else:
+        return True
+
+
+
 
 
 
 main()
+
